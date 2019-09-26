@@ -1,0 +1,13 @@
+applications:
+- name: chartmuseum
+  buildpacks:
+  - binary_buildpack
+  stack: cflinuxfs3
+  instances: 1
+  disk_quota: 1G
+  memory: 128M
+  routes:
+  - route: helm.starkandwayne.com
+  env:
+    STORAGE: local
+    STORAGE_LOCAL_ROOTDIR: storage/
