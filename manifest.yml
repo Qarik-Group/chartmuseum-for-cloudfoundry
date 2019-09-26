@@ -8,6 +8,7 @@ applications:
   memory: 128M
   routes:
   - route: helm.starkandwayne.com
+  - route: chartmuseum.starkandwayne.com
   env:
     STORAGE: local
     STORAGE_LOCAL_ROOTDIR: storage/
