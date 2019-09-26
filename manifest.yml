@@ -5,10 +5,17 @@ applications:
   stack: cflinuxfs3
   instances: 1
   disk_quota: 1G
-  memory: 128M
+  memory: 32M
   routes:
-  - route: helm.starkandwayne.com
   - route: chartmuseum.starkandwayne.com
+  - route: helm.starkandwayne.com
   env:
+    # run "./bin/start.sh --help" to see env vars for configuration
+    AUTH_ANONYMOUS_GET: true # allow anonymous GET operations
+    BASIC_AUTH_USER: ((auth-user))
+    BASIC_AUTH_PASS: ((auth-pass))
+    AUTH_ANONYMOUS_GET: true
     STORAGE: local
     STORAGE_LOCAL_ROOTDIR: storage/
+    # TODO: discover from $VCAP_APPLICATION
+    CHART_URL: https://chartmuseum.starkandwayne.com

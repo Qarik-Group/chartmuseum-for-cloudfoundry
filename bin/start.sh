@@ -19,5 +19,7 @@ platform() {
 }
 
 ./bin/chartmuseum-$(platform) --version
-./bin/chartmuseum-$(platform) "$@"
+./bin/chartmuseum-$(platform) \
+  --port=${PORT:-8080} \
+  "$@"
 
