@@ -21,8 +21,9 @@ The project includes a sample `manifest-starkandwayne.yml` with environment vari
 We deploy this application, and fulfil the required variables with:
 
 ```plain
-cf push \
-    --var auth-user=USER  --var auth-pass=PASSWORD \
+cf push -f manifest-starkandwayne.yml \
+    --var "auth-user=USER" \
+    --var "auth-pass=PASSWORD" \
     --var "aws-access-key-id=KEYKEYKEY" \
     --var "aws-secret-access-key=SECRETSECRET"
 ```
