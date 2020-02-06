@@ -1,0 +1,24 @@
+applications:
+- name: kubecf-chartmuseum
+  buildpacks:
+    - binary_buildpack
+  stack: cflinuxfs3
+  instances: 1
+  disk_quota: 1G
+  memory: 32M
+  routes:
+  - route: kubecf-helm.starkandwayne.com
+  env:
+    # run "./bin/start.sh --help" to see env vars for configuration
+    AUTH_ANONYMOUS_GET: true # allow anonymous GET operations
+    BASIC_AUTH_USER: ((auth-user))
+    BASIC_AUTH_PASS: ((auth-pass))
+    AUTH_ANONYMOUS_GET: true
+    # STORAGE: local
+    # STORAGE_LOCAL_ROOTDIR: storage/
+    STORAGE: amazon
+    STORAGE_AMAZON_REGION: us-east-2
+    STORAGE_AMAZON_BUCKET: starkandwayne-chartmuseum
+    STORAGE_AMAZON_PREFIX: kubecf/production/charts
+    AWS_ACCESS_KEY_ID: ((aws-access-key-id))
+    AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
